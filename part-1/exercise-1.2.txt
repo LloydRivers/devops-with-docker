@@ -1,0 +1,24 @@
+➜  ~ docker rm -f $(docker ps -aq)
+
+0c76699f5078
+d13aa140d433
+fdb053baa1df
+➜  ~ docker rmi -f $(docker images -aq)
+
+Untagged: nginx:latest
+Untagged: nginx@sha256:2bdc49f2f8ae8d8dc50ed00f2ee56d00385c6f8bc8a8b320d0a294d9e3b49026
+Deleted: sha256:8aea65d81da202cf886d7766c7f2691bb9e363c6b5d9b1f5d9ddaaa4bc1e90c2
+Deleted: sha256:cea62cd88bd2b2031511f8f0324aed0e9b76bb9ea63aabcf6ae586accc1ce0e1
+Deleted: sha256:fb67e05e6bcf5eb1c0903be8b4c913f083256367d32cbf7f733ea06112b3725f
+Deleted: sha256:57b878d36741448cd73cbbf9f314d04199e3bf25c27e7dfb96f56c6cbdf1772f
+Deleted: sha256:9a8a74c028df29d85d8fe066947f6736f0e54672fb7c3b2073136e822c6e571e
+Deleted: sha256:83e9c1424f23faf2086283e83c039af4f121bc989e61c96bb50ddc55cb566e50
+Deleted: sha256:94b4e94a1cdcdef6f714aaa5eaf9494db95deec612954854dfbc2e2884e2d03f
+Deleted: sha256:c7ed07af9d6688899456cb187c1f81c88a30a60f2a7477d8e40af31a201b1a55
+➜  ~ docker ps -a
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+➜  ~ docker image ls -a
+
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+➜  ~ 
+
