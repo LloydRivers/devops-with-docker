@@ -1,0 +1,26 @@
+➜  ~ docker run -it --name website-container ubuntu
+
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+005e2837585d: Pull complete 
+Digest: sha256:6042500cf4b44023ea1894effe7890666b0c5c7871ed83a97c36c76ae560bb9b
+Status: Downloaded newer image for ubuntu:latest
+root@378c5cdd4703:/# ls
+bin   dev  home  media  opt   root  sbin  sys  usr
+boot  etc  lib   mnt    proc  run   srv   tmp  var
+root@378c5cdd4703:/# apt-get update
+root@378c5cdd4703:/# apt-get install -y curl
+
+root@378c5cdd4703:/# sh -c 'while true; do echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website; done'
+Input website:
+helsinki.fi
+Searching..
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.22.1</center>
+</body>
+</html>
+Input website:
+
