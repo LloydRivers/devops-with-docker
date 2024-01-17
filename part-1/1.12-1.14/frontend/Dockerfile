@@ -14,9 +14,8 @@ COPY . .
 
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 
-ARG REACT_APP_BACKEND_URL
-ENV REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL}
-RUN REACT_APP_BACKEND_URL=${REACT_APP_BACKEND_URL} npm run build
+ENV REACT_APP_BACKEND_URL=http://localhost:8080/
+RUN npm run build
 
 FROM mhart/alpine-node:16
 

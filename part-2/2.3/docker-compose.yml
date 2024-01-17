@@ -1,6 +1,25 @@
 version: "3.8"
 
 services:
+  backend:
+    container_name: example-backend
+    environment:
+      REDIS_HOST: redis
+    build:
+      context: ./example-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+
+  redis:
+    container_name: example-cache
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
   web:
     container_name: example-frontend
     build:
@@ -8,11 +27,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
-
-  backend:
-    container_name: example-backend
-    build:
-      context: ./example-backend
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
+    depends_on:
+      - backend
