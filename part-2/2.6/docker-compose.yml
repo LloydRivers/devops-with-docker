@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  # Backend service
+  api:
+    container_name: example-backend
+    build:
+      context: ./example-backend
+      dockerfile: Dockerfile
+    environment:
+      REDIS_HOST: redis
+      POSTGRES_HOST: postgresql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "8080:8080"
+
+  # Frontend service
+  web:
+    container_name: example-frontend
+    build:
+      context: ./example-frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - api
+    ports:
+      - "5000:5000"
+
+  # Redis service
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+    # Postgresql service
+  db:
+    container_name: postgresql
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: postgresql
+    volumes:
+      - database:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  database:
