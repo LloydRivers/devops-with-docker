@@ -46,8 +46,9 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST: postgresql
+    # EXERCISE 2.7 - Add a volume to persist the data.
     volumes:
-      - database:/var/lib/postgresql/data
+      - ./database:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 
