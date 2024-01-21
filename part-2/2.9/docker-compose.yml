@@ -7,7 +7,6 @@ services:
     ports:
       - "8080:8080"
     environment:
-      REQUEST_ORIGIN: http://proxy/
       REDIS_HOST: redis
       POSTGRES_HOST: postgresql
       POSTGRES_USER: postgres
@@ -27,7 +26,8 @@ services:
     ports:
       - "5000:5000"
     environment:
-      REACT_APP_BACKEND_URL: http://proxy/api/
+      #Added this line
+      REACT_APP_BACKEND_URL: http://localhost/api
     depends_on:
       - backend
     build:
@@ -57,7 +57,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DATABASE: postgres
-    image: postgres:13.2-alpine
+    image: postgres:15.0-alpine
     restart: unless-stopped
     #EXERCISE 2.7 - Add a volume to persist the data.
     volumes:
