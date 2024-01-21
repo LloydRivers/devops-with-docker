@@ -12,6 +12,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: postgres
+      REQUEST_ORIGIN: http://localhost:80
     depends_on:
       - db
       - redis
@@ -26,7 +27,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      REACT_APP_BACKEND_URL: http://api
+      REACT_APP_BACKEND_URL: http://backend/api
     depends_on:
       - backend
     build:
